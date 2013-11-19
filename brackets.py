@@ -10,7 +10,7 @@ CHARS_CLOSE_OPEN_PAIRING = {
     ')': '(',
     '}': '{',
 }
-WILDCARD_CHARS = ' |'
+WILDCARD_CHARS = ' |*-_=+!:^"\''
 
 
 def is_balanced(expression):
@@ -81,9 +81,19 @@ class MatchingBracketsTest(unittest.TestCase):
 
     def test_wildcard_character_must_be_accepted(self):
         self.assertTrue(is_balanced('||'))
-        self.assertTrue(is_balanced('<||>'))
         self.assertTrue(is_balanced('<  >'))
+        self.assertTrue(is_balanced('<||>'))
+        self.assertTrue(is_balanced('<**>'))
+        self.assertTrue(is_balanced('<!!>'))
+        self.assertTrue(is_balanced('<++>'))
+        self.assertTrue(is_balanced('<::>'))
+        self.assertTrue(is_balanced('<^^>'))
+        self.assertTrue(is_balanced('<"">'))
+        self.assertTrue(is_balanced("<''>"))
+        self.assertTrue(is_balanced('<-->'))
+        self.assertTrue(is_balanced('<__>'))
         self.assertTrue(is_balanced(' |  {}  | '))
+        self.assertTrue(is_balanced(' |*-_=+!:^"\'\'"^:!+=_-*| '))
 
     def test_wildcard_character_must_be_valid_if_in_the_middle(self):
         self.assertTrue(is_balanced('|'))
