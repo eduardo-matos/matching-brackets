@@ -36,9 +36,10 @@ def is_balanced(expression):
             return False
 
     for char in expression:
-        if char not in OPENING_CHARS and char not in CLOSING_CHARS and char not in WILDCARD_CHARS:
+        if char not in OPENING_CHARS + CLOSING_CHARS + WILDCARD_CHARS:
             return False
-        elif char in WILDCARD_CHARS:
+
+        if char in WILDCARD_CHARS:
             if stack and char is stack[-1]:
                 stack.pop()
             else:
