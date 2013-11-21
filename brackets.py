@@ -27,7 +27,7 @@ def is_balanced(expression):
 
     # if expression length is odd, then we have a
     # char in the middle. hopefully it's a wildcard
-    if len(expression) % 2 is not 0:
+    if len(expression) % 2 != 0:
         middle_index = int(math.floor(len(expression)/2))
         if expression[middle_index] in WILDCARD_CHARS:
             # now the expression has an even length
@@ -40,13 +40,13 @@ def is_balanced(expression):
             return False
 
         if char in WILDCARD_CHARS:
-            if stack and char is stack[-1]:
+            if stack and char == stack[-1]:
                 stack.pop()
             else:
                 stack.append(char)
         elif char in OPENING_CHARS:
             stack.append(char)
-        elif CHARS_CLOSE_OPEN_PAIRING[char] is not stack.pop():
+        elif CHARS_CLOSE_OPEN_PAIRING[char] != stack.pop():
             return False
 
     return False if stack else True
