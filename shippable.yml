@@ -8,4 +8,4 @@ python:
   - 3.4
 
 script:
-  - python matching.py
+  - python brackets.py
